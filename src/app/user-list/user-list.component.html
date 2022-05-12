@@ -1,0 +1,48 @@
+<!-- <div class="userList">
+  <div class="user" id="{{ user.id }}" *ngFor="let user of datas">
+    <div>
+      <img src="{{ user.avatar }}" />
+    </div>
+    <div>
+      <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+      <p>{{ user.email }}</p>
+      <p>id: {{ user.id }}</p>
+    </div>
+    <div className="icons">
+      <button class="btn">
+        <p>delete</p>
+      </button>
+      <button class="btn">
+        <p>edit</p>
+      </button>
+    </div>
+  </div>
+</div> -->
+<mat-grid-list cols="2" rowHeight="4:1" class="userList">
+  <mat-grid-tile
+    class="user"
+    id="{{ user.id }}"
+    *ngFor="let user of userService.datas"
+  >
+    <div>
+      <img src="{{ user.avatar }}" />
+    </div>
+    <div class="info">
+      <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+      <p>{{ user.email }}</p>
+      <p>id: {{ user.id }}</p>
+    </div>
+    <div class="icons">
+      <button class="btn" (click)="removeUser(user.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button class="btn" (click)="updateUser(user)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<button mat-fab color="primary" class="addBtn" (click)="openDialog()">
+  <mat-icon>add</mat-icon>
+</button>
